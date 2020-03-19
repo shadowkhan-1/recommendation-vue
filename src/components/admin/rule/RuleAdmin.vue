@@ -71,7 +71,7 @@
       :page-size="pagesize"
       :total="tableData.length">
     </el-pagination>
-    <el-dialog title="用户信息" :visible.sync="dialogFormVisible">
+    <el-dialog title="用户信息" :visible.sync="dialogFormVisible" v-if="dialogFormVisible">
       <el-form :model="form" ref="usertable" label-position="left">
         <el-form-item prop="username" label="用户名" :label-width="formLabelWidth">
           <el-input v-model="form.username" autocomplete="off"></el-input>
@@ -161,6 +161,8 @@ export default {
     },
     adduser () {
       this.dialogFormVisible = true
+      this.form = []
+      this._form = []
       this.todo = 'adduser'
     },
     handleCurrentChange: function (currentPage) {
@@ -232,6 +234,7 @@ export default {
     },
     resetForm (formName) {
       this.$refs[formName].resetFields()
+      this.form = this._form
       this.dialogFormVisible = false
       this._form = []
     },

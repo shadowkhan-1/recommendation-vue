@@ -64,7 +64,7 @@
 
       </el-table-column>
     </el-table>
-    <el-dialog title="用户信息" :visible.sync="dialogFormVisible" >
+    <el-dialog title="用户信息" :visible.sync="dialogFormVisible" v-if="dialogFormVisible">
       <el-form :model="form" ref="usertable" label-position="left">
         <el-form-item prop="username" label="用户名" :label-width="formLabelWidth">
           <el-input v-model="form.username" autocomplete="off"></el-input>
@@ -159,6 +159,8 @@ export default {
     },
     adduser () {
       this.dialogFormVisible = true
+      this.form = []
+      this._form = []
       this.todo = 'adduser'
     },
     handleCurrentChange: function (currentPage) {
@@ -234,8 +236,12 @@ export default {
       }
     },
     resetForm (formName) {
+      // this.$nextTick(() => {
+      //   this.$refs[formName].resetFields()
+      // })
       this.$refs[formName].resetFields()
       this.dialogFormVisible = false
+      this.form = []
       this._form = []
     },
     handleDelete (row) {

@@ -73,7 +73,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog title="图书信息" :visible.sync="dialogFormVisible" >
+    <el-dialog title="图书信息" :visible.sync="dialogFormVisible" v-if="dialogFormVisible">
       <el-form :model="form" ref="bookform" label-position="left">
         <el-form-item prop="bookTitle" label="图书标题" :label-width="formLabelWidth">
           <el-input v-model="form.bookTitle" autocomplete="off"></el-input>
@@ -185,6 +185,8 @@ export default {
     },
     addbook () {
       this.dialogFormVisible = true
+      this.form = []
+      this._form = []
       this.todo = 'addbook'
     },
     handleCurrentChange: function (currentPage) {
@@ -262,6 +264,7 @@ export default {
     },
     resetForm (formName) {
       this.$refs[formName].resetFields()
+      this.form = this._form
       this.dialogFormVisible = false
       this._form = []
     },
