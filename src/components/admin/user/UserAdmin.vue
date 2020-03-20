@@ -181,7 +181,7 @@ export default {
     },
     handleEditChangeSend (todo, form) {
       if (todo === 'edituser') {
-        if (form === this._form) {
+        if (form.username === this._form.username && form.name === this._form.name && form.phone === this._form.phone && form.email === this._form.email) {
           this.$alert('没有更改的内容!', '提示', {
             confirmButtonText: '确定'
           })

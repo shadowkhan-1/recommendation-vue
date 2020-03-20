@@ -200,7 +200,9 @@ export default {
     },
     handleEditChangeSend (todo, form) {
       if (todo === 'editbook') {
-        if (form === this._form) {
+        if (form.bookTitle === this._form.bookTitle && form.bookAuthor === this._form.bookAuthor && form.publisher === this._form.publisher &&
+        form.yearOfPublication === this._form.yearOfPublication && form.imageUrlS === this._form.imageUrlS &&
+        form.imageUrlM === this._form.imageUrlM && form.imageUrlL === this._form.imageUrlL) {
           this.$alert('没有更改的内容!', '提示', {
             confirmButtonText: '确定'
           })
